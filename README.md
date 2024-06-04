@@ -145,3 +145,15 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
    2. grounding through bbox
       
 </details>
+
+<details>
+
+  <summary>Ferret-v2: An Improved Baseline for Referring and Grounding with Large Language Models</summary>
+
+  [Paper](http://arxiv.org/abs/2404.07973)
+   
+   1. propose a bunch of improvements on Ferret v1
+   2. including any-resolution (patches) for larger resolution
+   3. DINOv2 Encoder for local feature extraction
+   4. and High-resolution Dense Alignment stage between SFT and instruction turning.
+</details>
