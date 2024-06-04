@@ -10,10 +10,10 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 ## Table of Contents
 - [Awesome-Multimodal-Large-Language-Models-With-Grounding](#awesome-multimodal-large-language-models-with-grounding)
   - [Table of Contents](#table-of-contents)
-  - [🔥 Large Vision-Language Model (ongoing)](#-large-vision-language-model-ongoing)
-  - [🔥 Multi-modality (ongoing)](#-multi-modality-ongoing)
+  - [🔥 Large Vision-Language Model](#-large-vision-language-model)
+  - [🔥 Multi-modality](#-multi-modality)
 
-## 🔥 Large Vision-Language Model (ongoing)
+## 🔥 Large Vision-Language Model
 
 
 <!-- template -->
@@ -32,7 +32,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   [Paper](https://arxiv.org/pdf/2307.03601) | [Github](https://github.com/jshilong/GPT4RoI)
 
-   1. propose referring for mllm by replacing placeholder <region_i> by feature obtained by mask pooling
+   1. propose referring for mllm by replacing placeholder \<region_i\> by feature obtained by mask pooling
   
 </details>
 
@@ -196,8 +196,55 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
    2. propose to use multple [SEG] token to ground multiple objects (indicted by the texts before the [SEG] token), and [REJ] token to rej null target
       
 </details>
+<details>
 
-## 🔥 Multi-modality (ongoing)
+  <summary>NExT-Chat: An LMM for Chat, Detection and Segmentation</summary>
+
+  [Paper](https://arxiv.org/pdf/2311.04498) | [Github](https://github.com/NExT-ChatV/NExT-Chat) | [Project](https://next-chatv.github.io/)
+
+   1. propose box encoder-decoder for referring and grounding
+   2. for grounding, use <trigger> token to indicate the presence of a grounding output and input the latent embedding to the box decoder (mask decoder e.g. SAM) for box (mask) generation 
+   3. for referring, use boxes to represent referred region and use box encoder to encode the referred boxes into features, which is input to LLM.
+   4. propose a cycle consistency loss for regularization of box encoder-decoder
+      ![图 0](images/50d131269405f43de1d95d747d9f7321d3a46bc87e3a2758286c837f8dec379a.png)  
+  
+</details>
+<details>
+
+  <summary>PerceptionGPT: Effectively Fusing Visual Perception into LLM</summary>
+
+  [Paper](https://arxiv.org/pdf/2311.06612)
+
+   1. similar to NExT-Chat, propose box encoder-decoder to encode and decode boxes, but seems to only focus on grounding without referring
+   2. One possible intriguing point: grounding output indicator \<vis\> is used to indicate the presence of grounding output (as usual) but the is replaced by the encoder's output feature in the LLM input. 
+  ![图 1](images/b94662b3d3344af40518360bbf617a97bda2baf867d56e7463170c0b64d32101.png)  
+</details>
+
+<details>
+
+  <summary>Kosmos-2: Grounding Multimodal Large Language Models to the World</summary>
+
+  [Paper](https://arxiv.org/abs/2306.14824) | [Github](https://github.com/microsoft/unilm/tree/master/kosmos-2)
+
+   1. build a web-scale grounding dataset by web-scale data (COYO-700M & LAION-2B etc) and vision detector (GLIP)
+   2. following pix2seq, divide the image into PxP grids and introduce PxP new tokens to represent
+   3. Use \<box\>\</box\> to represent a bbox, with \<delim\> to separate multiple boxes (if there are multiple boxes)
+   4. Use markdown-like grammar to reference grounded text with \<p\> \</p\>
+   e.g. 
+   ![图 2](images/ee9c18e6d50fb94df01b5ff11283fd3128d6b9f0c7e103e70c07887bf94a71d2.png)  
+
+</details>
+<details>
+
+  <summary>Shikra: Unleashing Multimodal LLM's Referential Dialogue Magic</summary>
+
+  [Paper](https://arxiv.org/pdf/2306.15195) | [Github](https://github.com/shikras/shikra)
+
+   1. propose to use normalized boxes for unified grounding and referring
+   2. Use texts to represent all normalized boxes (directly tokenized by text tokenizer) and input to LLM
+</details>
+
+## 🔥 Multi-modality
 
 <details>
 
