@@ -10,9 +10,10 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 ## Table of Contents
 - [Awesome-Multimodal-Large-Language-Models-With-Grounding](#awesome-multimodal-large-language-models-with-grounding)
   - [Table of Contents](#table-of-contents)
-  - [🔥 Multimodal Large Language Models with Grounding Ability (ongoing)](#-multimodal-large-language-models-with-grounding-ability-ongoing)
+  - [🔥 Large Vision-Language Model (ongoing)](#-large-vision-language-model-ongoing)
+  - [🔥 Multi-modality (ongoing)](#-multi-modality-ongoing)
 
-## 🔥 Multimodal Large Language Models with Grounding Ability (ongoing)
+## 🔥 Large Vision-Language Model (ongoing)
 
 
 <!-- template -->
@@ -25,7 +26,26 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
    summary
   
 </details> -->
+<details>
 
+  <summary>GPT4RoI: Instruction Tuning Large Language Model on Region-of-Interest</summary>
+
+  [Paper](https://arxiv.org/pdf/2307.03601) | [Github](https://github.com/jshilong/GPT4RoI)
+
+   1. propose referring for mllm by replacing placeholder <region_i> by feature obtained by mask pooling
+  
+</details>
+
+<details>
+
+  <summary>Osprey: Pixel Understanding with Visual Instruction Tuning</summary>
+
+  [Paper](https://arxiv.org/pdf/2312.10032) | [Github](https://github.com/CircleRadon/Osprey)
+
+   1. similar to GPT4RoI, Osprey also use mask representation to refer to entities in images. 
+   2. It uses mask pooling to extract semantic features from image encoder and combines with a location extractor to process the mask and output spatial token.
+  
+</details>
 <details>
 
   <summary>LISA: Reasoning Segmentation via Large Language Model</summary>
@@ -156,4 +176,39 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
    2. including any-resolution (patches) for larger resolution
    3. DINOv2 Encoder for local feature extraction
    4. and High-resolution Dense Alignment stage between SFT and instruction turning.
+  <summary>u-LLaVA: Unifying Multi-Modal Tasks via Large Language Model</summary>
+
+  [Paper](http://arxiv.org/abs/2311.05348) | [Github](https://github.com/OPPOMKLab/u-LLaVA)
+   
+   1. propose to use different decoder for grounding (SAM for segmentation, Grounding DINO for detection)
+      
+</details>
+
+<details>
+
+  <summary>GSVA: Generalized Segmentation via Multimodal Large Language Models</summary>
+
+  [Paper](http://arxiv.org/abs/2312.10103) | [Github](https://github.com/LeapLabTHU/GSVA)
+   
+   1. propose to Generalized Referring Expression Segmentation (GRES) in grounding LLM
+      1. multiple object to ground
+      2. need to reject null target
+   2. propose to use multple [SEG] token to ground multiple objects (indicted by the texts before the [SEG] token), and [REJ] token to rej null target
+      
+</details>
+
+## 🔥 Multi-modality (ongoing)
+
+<details>
+
+  <summary>GroundingGPT:Language Enhanced Multi-modal Grounding Model</summary>
+
+  [Paper](http://arxiv.org/abs/2401.06071) | [Github](https://github.com/OPPOMKLab/u-LLaVA)
+   
+   1. grounding and referring of multi-modality in text
+      1. bounding box by four relative coordinate values:[x1, y1, x2, y2]
+      2. video timestamps by two two-digit decimals: {t1, t2}
+   2. curate dataset for three stage training
+      ![图 1](images/8f3a6cf2fec0f679487196ed6c48f94e076ae29ae311f8a888fcc8ce23e73e7c.png)  
+
 </details>
