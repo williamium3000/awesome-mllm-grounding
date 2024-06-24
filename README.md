@@ -23,17 +23,18 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 | Format | Desc | Ppaer | 
 |------------|-------|--------|
 | Decoder on latent| leverage a decoder to ground | [PerceptionGPT](https://arxiv.org/pdf/2311.06612), [NExT-Chat](https://arxiv.org/pdf/2311.04498), [PSALM](http://arxiv.org/abs/2403.14598), [PixelLM](http://arxiv.org/abs/2312.02228), [u-LLaVA](http://arxiv.org/abs/2311.05348), [GSVA](http://arxiv.org/abs/2312.10103)|
-| Output Token | direct output in the form of tokens | [Shikra](https://arxiv.org/pdf/2306.15195), [Kosmos-2](https://arxiv.org/pdf/2306.14824), [VisionLLM](https://proceedings.neurips.cc/paper_files/paper/2023/file/c1f7b1ed763e9c75e4db74b49b76db5f-Paper-Conference.pdf), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973)|
-| Pixel Space | output in discrete pixel space encoded by VQGAN | [Unified-IO](https://arxiv.org/abs/2206.08916), [Unified-IO 2](http://arxiv.org/abs/2312.17172) | 
-| Proposal Retrieval | retrieval from region candidates | [LLM-Seg](http://arxiv.org/abs/2404.08767), [Kosmos-2](https://arxiv.org/pdf/2306.14824), [GROUNDHOG](http://arxiv.org/abs/2305.14167)|
+| Output numerical coordinates | direct output numerical tokens | [Shikra](https://arxiv.org/pdf/2306.15195), [VisionLLM](https://proceedings.neurips.cc/paper_files/paper/2023/file/c1f7b1ed763e9c75e4db74b49b76db5f-Paper-Conference.pdf), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [CogVLM](http://arxiv.org/abs/2311.03079)|
+| Output token coordinates | output new tokens added to refer positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) |
+| Pixel space | output in discrete pixel space encoded by VQGAN | [Unified-IO](https://arxiv.org/abs/2206.08916), [Unified-IO 2](http://arxiv.org/abs/2312.17172) | 
+| Proposal retrieval | retrieval from region candidates | [LLM-Seg](http://arxiv.org/abs/2404.08767), [Kosmos-2](https://arxiv.org/pdf/2306.14824), [GROUNDHOG](http://arxiv.org/abs/2305.14167)|
 
 ### Referring
 
 | Format | Desc | Ppaer | 
 |------------|-------|--------|
 | Pooling | Leverage Mask Pooling / RoI Pooling / RoI Align to obtain features from the im encoder output | [Groma](http://arxiv.org/abs/2404.13013), [GPT4RoI](https://arxiv.org/pdf/2307.03601), [Osprey](https://arxiv.org/pdf/2312.10032), [PSALM](http://arxiv.org/abs/2403.14598), [GROUNDHOG](http://arxiv.org/abs/2305.14167), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [PVIT](https://arxiv.org/pdf/2308.13437) |
-| Numerical Coordinates | Leverage numerical coordinates for referring (bbox / sampled points in mask) | [Shikra](https://arxiv.org/pdf/2306.15195), [PerceptionGPT](https://arxiv.org/pdf/2311.06612) (w/ encoder), [NExT-Chat](https://arxiv.org/pdf/2311.04498) (w/ encoder)|
-| Token Coordinates | Add new tokens to vocab to present spatial positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) | 
+| Numerical coordinates | Leverage numerical coordinates for referring (bbox / sampled points in mask) | [Shikra](https://arxiv.org/pdf/2306.15195), [PerceptionGPT](https://arxiv.org/pdf/2311.06612) (w/ encoder), [NExT-Chat](https://arxiv.org/pdf/2311.04498) (w/ encoder), [CogVLM](http://arxiv.org/abs/2311.03079)|
+| Token coordinates | Add new tokens to vocab to present spatial positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) | 
 
 * w/ encoder: refers to using a encoder to encode the input coordinates.
 ### Dataset
