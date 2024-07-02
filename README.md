@@ -20,7 +20,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 ## 🔥 Large Vision-Language Model
 
 ### Grounding
-| Format | Desc | Ppaer | 
+| Format | Desc | Paper | 
 |------------|-------|--------|
 | Decoder on latent| leverage a decoder to ground | [PerceptionGPT](https://arxiv.org/pdf/2311.06612), [NExT-Chat](https://arxiv.org/pdf/2311.04498), [PSALM](http://arxiv.org/abs/2403.14598), [PixelLM](http://arxiv.org/abs/2312.02228), [u-LLaVA](http://arxiv.org/abs/2311.05348), [GSVA](http://arxiv.org/abs/2312.10103)|
 | Output numerical coordinates | direct output numerical tokens | [Shikra](https://arxiv.org/pdf/2306.15195), [VisionLLM](https://proceedings.neurips.cc/paper_files/paper/2023/file/c1f7b1ed763e9c75e4db74b49b76db5f-Paper-Conference.pdf), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [CogVLM](http://arxiv.org/abs/2311.03079)|
@@ -30,7 +30,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
 ### Referring
 
-| Format | Desc | Ppaer | 
+| Format | Desc | Paper | 
 |------------|-------|--------|
 | Pooling | Leverage Mask Pooling / RoI Pooling / RoI Align to obtain features from the im encoder output | [Groma](http://arxiv.org/abs/2404.13013), [GPT4RoI](https://arxiv.org/pdf/2307.03601), [Osprey](https://arxiv.org/pdf/2312.10032), [PSALM](http://arxiv.org/abs/2403.14598), [GROUNDHOG](http://arxiv.org/abs/2305.14167), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [PVIT](https://arxiv.org/pdf/2308.13437) |
 | Numerical coordinates | Leverage numerical coordinates for referring (bbox / sampled points in mask) | [Shikra](https://arxiv.org/pdf/2306.15195), [PerceptionGPT](https://arxiv.org/pdf/2311.06612) (w/ encoder), [NExT-Chat](https://arxiv.org/pdf/2311.04498) (w/ encoder), [CogVLM](http://arxiv.org/abs/2311.03079)|
@@ -38,6 +38,12 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
 * w/ encoder: refers to using a encoder to encode the input coordinates.
 ### Dataset
+
+| Dataset | Source | Data Source | Quantity | Cnstruction Method
+|------------|--------------|--------------|--------------|--------------|
+| GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | VG, Object365, RefCOCOs, Flickr30k-Entities, LLaVA-158K | - | Template, SAM, ChatGPT4, GLIPv2 |
+
+
 
 <!-- template -->
 <!-- <details>
