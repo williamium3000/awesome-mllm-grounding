@@ -39,10 +39,10 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 * w/ encoder: refers to using a encoder to encode the input coordinates.
 ### Dataset
 
-| Dataset | Source | Data Source | Quantity | Cnstruction Method
+| Dataset | Source | Data Source | Quantity | Cnstruction Method | 
 |------------|--------------|--------------|--------------|--------------|
 | GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | VG, Object365, RefCOCOs, Flickr30k-Entities, LLaVA-158K | - | Template, SAM, ChatGPT4, GLIPv2 |
-
+| Shikra-RD | [Shikra](https://arxiv.org/pdf/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
 
 
 <!-- template -->
