@@ -24,7 +24,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 ### Grounding
 | Format | Desc | Paper | 
 |------------|-------|--------|
-| Decoder on latent| leverage a decoder to ground | [PerceptionGPT](https://arxiv.org/pdf/2311.06612), [NExT-Chat](https://arxiv.org/pdf/2311.04498), [PSALM](http://arxiv.org/abs/2403.14598), [PixelLM](http://arxiv.org/abs/2312.02228), [u-LLaVA](http://arxiv.org/abs/2311.05348), [GSVA](http://arxiv.org/abs/2312.10103)|
+| Decoder on latent| leverage a decoder to ground | [PerceptionGPT](https://arxiv.org/pdf/2311.06612), [NExT-Chat](https://arxiv.org/pdf/2311.04498), [PSALM](http://arxiv.org/abs/2403.14598), [PixelLM](http://arxiv.org/abs/2312.02228), [u-LLaVA](http://arxiv.org/abs/2311.05348), [GSVA](http://arxiv.org/abs/2312.10103), [ChatterBox](http://arxiv.org/abs/2401.13307)|
 | Output numerical coordinates | direct output numerical tokens | [Shikra](https://arxiv.org/pdf/2306.15195), [VisionLLM](https://proceedings.neurips.cc/paper_files/paper/2023/file/c1f7b1ed763e9c75e4db74b49b76db5f-Paper-Conference.pdf), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [CogVLM](http://arxiv.org/abs/2311.03079)|
 | Output token coordinates | output new tokens added to refer positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) |
 | Pixel space | output in discrete pixel space encoded by VQGAN | [Unified-IO](https://arxiv.org/abs/2206.08916), [Unified-IO 2](http://arxiv.org/abs/2312.17172) | 
@@ -34,7 +34,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
 | Format | Desc | Paper | 
 |------------|-------|--------|
-| Pooling | Leverage Mask Pooling / RoI Pooling / RoI Align to obtain features from the im encoder output | [Groma](http://arxiv.org/abs/2404.13013), [GPT4RoI](https://arxiv.org/pdf/2307.03601), [Osprey](https://arxiv.org/pdf/2312.10032), [PSALM](http://arxiv.org/abs/2403.14598), [GROUNDHOG](http://arxiv.org/abs/2305.14167), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [PVIT](https://arxiv.org/pdf/2308.13437) |
+| Pooling | Leverage Mask Pooling / RoI Pooling / RoI Align to obtain features from the im encoder output | [Groma](http://arxiv.org/abs/2404.13013), [GPT4RoI](https://arxiv.org/pdf/2307.03601), [Osprey](https://arxiv.org/pdf/2312.10032), [PSALM](http://arxiv.org/abs/2403.14598), [GROUNDHOG](http://arxiv.org/abs/2305.14167), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [PVIT](https://arxiv.org/pdf/2308.13437), [ChatterBox](http://arxiv.org/abs/2401.13307) |
 | Numerical coordinates | Leverage numerical coordinates for referring (bbox / sampled points in mask) | [Shikra](https://arxiv.org/pdf/2306.15195), [PerceptionGPT](https://arxiv.org/pdf/2311.06612) (w/ encoder), [NExT-Chat](https://arxiv.org/pdf/2311.04498) (w/ encoder), [CogVLM](http://arxiv.org/abs/2311.03079)|
 | Token coordinates | Add new tokens to vocab to present spatial positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) | 
 
@@ -44,18 +44,18 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
 | Dataset | Source | Data Source | Quantity | Cnstruction Method |
 |------------|--------------|--------------|--------------|--------------|
-| GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | VG, Object365, RefCOCOs, Flickr30k-Entities, LLaVA-158K | - | <li> Templates are used to convert data. <li> SAM is used to generate mask for free-form referring. <li> ChatGPT4 is used t o generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. 5. Negative mining: generate negative yes/or question|
+| GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | VG, Object365, RefCOCOs, Flickr30k-Entities, LLaVA-158K | - | <li> Templates are used to convert data. <li> SAM is used to generate masks for free-form referring. <li> ChatGPT4 is used to generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. <li> Negative mining: generate negative yes/or question|
 | Shikra-RD | [Shikra](https://arxiv.org/pdf/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
 | CB-300K | [ChatterBox](http://arxiv.org/abs/2401.13307) | VG | 717,075 QA pairs | 4 subsets. <li> CB-MRG: Use ChatGPT to write dialogues with bbox <li> CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT <li> CB-REF REG task <li> CB-GND: grounding task | 
 
 
 ### Training Recipe
-| Model | Source | Recipe | 
-|------------|--------------|--------------|
-| Ferret | [Ferret](http://arxiv.org/abs/2310.07704) | <li> Use LLaVA pretrained <li> SFT on GRIT |
-| Ferret2 | [Ferret2](http://arxiv.org/abs/2404.07973) | <li> image-caption alignment on 1.4M image-text pairs <li> high-resolution dense alignment with template referring & grounding <li> instruction tuning with GRIT, VQA and OCR with GLIPv2 output bbox |
-
-
+| Model | Recipe | 
+|------------|--------------|
+| [Ferret](http://arxiv.org/abs/2310.07704) | <li> Use LLaVA pretrained <li> SFT on GRIT |
+| [Ferret2](http://arxiv.org/abs/2404.07973) | <li> image-caption alignment on 1.4M image-text pairs <li> high-resolution dense alignment with template referring & grounding <li> instruction tuning with GRIT, VQA and OCR (VQA and OCR are augmented with GLIPv2 bbox) |
+| [ChatterBox](http://arxiv.org/abs/2401.13307) | Trainable: LoRA and location decoder <li> warm up training with visual grounding only dataset. <li> instruction tuning  with CB-300K |
+| [GPT4RoI](https://arxiv.org/pdf/2307.03601) | <li> Use LLaVA pretrained <li> pretrain region feature extractor with text-region datasets (COCO, RefCOCO, RefCOCO+) <li> train connector, region feature extractor and LLM to follow instructions |
 ### Evaluation Dataset
 | Ferret Bench | [Ferret](http://arxiv.org/abs/2310.07704) | COCO validation set | 120 | <li> Referring Description: models are asked to describe a referred region based on its interaction with surrounding objects. <li> Referring Reasoning: models need to reason on top of one or more referred regions correctly. <li> Grounding in Conversation: models are required to reason correctly and accurately ground/localize the objects/regions necessary for the reasoning.|
 
