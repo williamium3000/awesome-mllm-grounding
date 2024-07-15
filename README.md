@@ -56,7 +56,10 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 | [Ferret2](http://arxiv.org/abs/2404.07973) | <li> image-caption alignment on 1.4M image-text pairs <li> high-resolution dense alignment with template referring & grounding <li> instruction tuning with GRIT, VQA and OCR (VQA and OCR are augmented with GLIPv2 bbox) |
 | [ChatterBox](http://arxiv.org/abs/2401.13307) | Trainable: LoRA and location decoder <li> warm up training with visual grounding only dataset. <li> instruction tuning  with CB-300K |
 | [GPT4RoI](https://arxiv.org/pdf/2307.03601) | <li> Use LLaVA pretrained <li> pretrain region feature extractor with text-region datasets (COCO, RefCOCO, RefCOCO+) <li> train connector, region feature extractor and LLM to follow instructions |
+
 ### Evaluation Dataset
+| Dataset | Source | Data Source | Quantity | Cnstruction Method |
+|------------|--------------|--------------|--------------|--------------|
 | Ferret Bench | [Ferret](http://arxiv.org/abs/2310.07704) | COCO validation set | 120 | <li> Referring Description: models are asked to describe a referred region based on its interaction with surrounding objects. <li> Referring Reasoning: models need to reason on top of one or more referred regions correctly. <li> Grounding in Conversation: models are required to reason correctly and accurately ground/localize the objects/regions necessary for the reasoning.|
 
 
