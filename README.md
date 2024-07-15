@@ -13,7 +13,8 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
   - [🔥 Large Vision-Language Model](#-large-vision-language-model)
     - [Grounding](#grounding)
     - [Referring](#referring)
-    - [Dataset](#dataset)
+    - [Training Dataset](#training-dataset)
+    - [Evaluation Dataset](#evaluation-dataset)
     - [Paper List](#paper-list)
   - [🔥 Multi-modality](#-multi-modality)
 
@@ -37,14 +38,17 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 | Token coordinates | Add new tokens to vocab to present spatial positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) | 
 
 * w/ encoder: refers to using a encoder to encode the input coordinates.
-### Dataset
+
+### Training Dataset
 
 | Dataset | Source | Data Source | Quantity | Cnstruction Method | 
 |------------|--------------|--------------|--------------|--------------|
-| GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | VG, Object365, RefCOCOs, Flickr30k-Entities, LLaVA-158K | - | Template, SAM, ChatGPT4, GLIPv2 |
+| GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | VG, Object365, RefCOCOs, Flickr30k-Entities, LLaVA-158K | - | 1. Templates are used to convert data. 2. SAM is used to generate mask for free-form referring. 3. ChatGPT4 is used t o generate dialogues with bbox. 4. Use GLIPv2 to ground groundable nouns in LLaVA-158k. 5. Negative mining: generate negative yes/or question|
 | Shikra-RD | [Shikra](https://arxiv.org/pdf/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
+| CB-300K | [ChatterBox](http://arxiv.org/abs/2401.13307) | 717,075 QA pairs | 4 subsets. 1. CB-MRG: Use ChatGPT to write dialogues with bbox 2. CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT 3. CB-REF REG task 4. CB-GND: grounding task | 
 
-
+### Evaluation Dataset
+| Ferret Bench | [Ferret](http://arxiv.org/abs/2310.07704) | COCO validation set | 120 | (i) Referring Description: models are asked to describe a referred region based on its interaction with surrounding objects. (ii) Referring Reasoning: models need to reason on top of one or more referred regions correctly. (iii) Grounding in Conversation: models are required to reason correctly and accurately ground/localize the objects/regions necessary for the reasoning.|
 <!-- template -->
 <!-- <details>
 
