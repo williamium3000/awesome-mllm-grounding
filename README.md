@@ -44,7 +44,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
 | Dataset | Source | Data Source | Quantity | Cnstruction Method |
 |------------|--------------|--------------|--------------|--------------|
-| GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | VG, Object365, RefCOCOs, Flickr30k-Entities, LLaVA-158K | - | <li> Templates are used to convert data. <li> SAM is used to generate masks for free-form referring. <li> ChatGPT4 is used to generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. <li> Negative mining: generate negative yes/or question|
+| GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | COYO-700M, LAION-2B | - | <li> Templates are used to convert data. <li> SAM is used to generate masks for free-form referring. <li> ChatGPT4 is used to generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. <li> Negative mining: generate negative yes/or question|
 | Shikra-RD | [Shikra](https://arxiv.org/pdf/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
 | CB-300K | [ChatterBox](http://arxiv.org/abs/2401.13307) | VG | 717,075 QA pairs | 4 subsets. <li> CB-MRG: Use ChatGPT to write dialogues with bbox <li> CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT <li> CB-REF REG task <li> CB-GND: grounding task | 
 
