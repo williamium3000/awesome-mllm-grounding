@@ -302,6 +302,16 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
    2. Change a Deformable DETR detection head into binary classifier to propose ROI and use AlignROI pooling to get the region feature
 </details>
 
+<details>
+
+  <summary>LISA: Reasoning Segmentation via Large Language Model</summary>
+
+  [Paper](https://arxiv.org/abs/2308.00692) | [Github](https://github.com/dvlab-research/LISA)
+
+   1. Introduce the reasoning segmentation task and establish a reasoning segmentation benchmark.
+   2. Propose LISA model, which represents the segmentation mask as an embedding and incorporates new segmentation capabilities.
+</details>
+
 ## 🔥 Multi-modality
 
 <details>
