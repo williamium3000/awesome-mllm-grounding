@@ -24,19 +24,19 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 ### Grounding
 | Format | Desc | Paper | 
 |------------|-------|--------|
-| Decoder on latent| leverage a decoder to ground | [PerceptionGPT](https://arxiv.org/pdf/2311.06612), [NExT-Chat](https://arxiv.org/pdf/2311.04498), [PSALM](http://arxiv.org/abs/2403.14598), [PixelLM](http://arxiv.org/abs/2312.02228), [u-LLaVA](http://arxiv.org/abs/2311.05348), [GSVA](http://arxiv.org/abs/2312.10103), [ChatterBox](http://arxiv.org/abs/2401.13307)|
-| Output numerical coordinates | direct output numerical tokens | [Shikra](https://arxiv.org/pdf/2306.15195), [VisionLLM](https://proceedings.neurips.cc/paper_files/paper/2023/file/c1f7b1ed763e9c75e4db74b49b76db5f-Paper-Conference.pdf), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [CogVLM](http://arxiv.org/abs/2311.03079)|
-| Output token coordinates | output new tokens added to refer positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) |
-| Pixel space | output in discrete pixel space encoded by VQGAN | [Unified-IO](https://arxiv.org/abs/2206.08916), [Unified-IO 2](http://arxiv.org/abs/2312.17172) | 
-| Proposal retrieval | retrieval from region candidates | [LLM-Seg](http://arxiv.org/abs/2404.08767), [Kosmos-2](https://arxiv.org/pdf/2306.14824), [GROUNDHOG](http://arxiv.org/abs/2305.14167)|
+| Decoder on latent| leverage a decoder to ground | [PerceptionGPT](https://arxiv.org/abs/2311.06612), [NExT-Chat](https://arxiv.org/abs/2311.04498), [PSALM](http://arxiv.org/abs/2403.14598), [PixelLM](http://arxiv.org/abs/2312.02228), [u-LLaVA](http://arxiv.org/abs/2311.05348), [GSVA](http://arxiv.org/abs/2312.10103), [ChatterBox](http://arxiv.org/abs/2401.13307)|
+| Output numerical coordinates | direct output numerical tokens | [Shikra](https://arxiv.org/abs/2306.15195), [VisionLLM](https://proceedings.neurips.cc/paper_files/paper/2023/file/c1f7b1ed763e9c75e4db74b49b76db5f-Paper-Conference.pdf), [Ferret](https://arxiv.org/abs/2310.07704), [Ferret2](https://arxiv.org/abs/2404.07973), [CogVLM](https://arxiv.org/abs/2311.03079)|
+| Output token coordinates | output new tokens added to refer positions | [Kosmos-2](https://arxiv.org/abs/2306.14824) |
+| Pixel space | output in discrete pixel space encoded by VQGAN | [Unified-IO](https://arxiv.org/abs/2206.08916), [Unified-IO 2](https://arxiv.org/abs/2312.17172) | 
+| Proposal retrieval | retrieval from region candidates | [LLM-Seg](https://arxiv.org/abs/2404.08767), [Kosmos-2](https://arxiv.org/abs/2306.14824), [GROUNDHOG](https://arxiv.org/abs/2305.14167)|
 
 ### Referring
 
 | Format | Desc | Paper | 
 |------------|-------|--------|
-| Pooling | Leverage Mask Pooling / RoI Pooling / RoI Align to obtain features from the im encoder output | [Groma](http://arxiv.org/abs/2404.13013), [GPT4RoI](https://arxiv.org/pdf/2307.03601), [Osprey](https://arxiv.org/pdf/2312.10032), [PSALM](http://arxiv.org/abs/2403.14598), [GROUNDHOG](http://arxiv.org/abs/2305.14167), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [PVIT](https://arxiv.org/pdf/2308.13437), [ChatterBox](http://arxiv.org/abs/2401.13307) |
-| Numerical coordinates | Leverage numerical coordinates for referring (bbox / sampled points in mask) | [Shikra](https://arxiv.org/pdf/2306.15195), [PerceptionGPT](https://arxiv.org/pdf/2311.06612) (w/ encoder), [NExT-Chat](https://arxiv.org/pdf/2311.04498) (w/ encoder), [CogVLM](http://arxiv.org/abs/2311.03079)|
-| Token coordinates | Add new tokens to vocab to present spatial positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) | 
+| Pooling | Leverage Mask Pooling / RoI Pooling / RoI Align to obtain features from the im encoder output | [Groma](https://arxiv.org/abs/2404.13013), [GPT4RoI](https://arxiv.org/abs/2307.03601), [Osprey](https://arxiv.org/abs/2312.10032), [PSALM](https://arxiv.org/abs/2403.14598), [GROUNDHOG](https://arxiv.org/abs/2305.14167), [Ferret](https://arxiv.org/abs/2310.07704), [Ferret2](https://arxiv.org/abs/2404.07973), [PVIT](https://arxiv.org/abs/2308.13437), [ChatterBox](https://arxiv.org/abs/2401.13307) |
+| Numerical coordinates | Leverage numerical coordinates for referring (bbox / sampled points in mask) | [Shikra](https://arxiv.org/abs/2306.15195), [PerceptionGPT](https://arxiv.org/abs/2311.06612) (w/ encoder), [NExT-Chat](https://arxiv.org/abs/2311.04498) (w/ encoder), [CogVLM](https://arxiv.org/abs/2311.03079)|
+| Token coordinates | Add new tokens to vocab to present spatial positions | [Kosmos-2](https://arxiv.org/abs/2306.14824) | 
 
 * w/ encoder: refers to using a encoder to encode the input coordinates.
 
@@ -44,23 +44,23 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
 | Dataset | Source | Data Source | Quantity | Cnstruction Method |
 |------------|--------------|--------------|--------------|--------------|
-| GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | COYO-700M, LAION-2B | - | <li> Templates are used to convert data. <li> SAM is used to generate masks for free-form referring. <li> ChatGPT4 is used to generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. <li> Negative mining: generate negative yes/or question|
-| Shikra-RD | [Shikra](https://arxiv.org/pdf/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
-| CB-300K | [ChatterBox](http://arxiv.org/abs/2401.13307) | VG | 717,075 QA pairs | 4 subsets. <li> CB-MRG: Use ChatGPT to write dialogues with bbox <li> CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT <li> CB-REF REG task <li> CB-GND: grounding task | 
+| GRIT | [Ferret](https://arxiv.org/abs/2310.07704) | COYO-700M, LAION-2B | - | <li> Templates are used to convert data. <li> SAM is used to generate masks for free-form referring. <li> ChatGPT4 is used to generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. <li> Negative mining: generate negative yes/or question|
+| Shikra-RD | [Shikra](https://arxiv.org/abs/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
+| CB-300K | [ChatterBox](https://arxiv.org/abs/2401.13307) | VG | 717,075 QA pairs | 4 subsets. <li> CB-MRG: Use ChatGPT to write dialogues with bbox <li> CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT <li> CB-REF REG task <li> CB-GND: grounding task | 
 
 
 ### Training Recipe
 | Model | Recipe | 
 |------------|--------------|
-| [Ferret](http://arxiv.org/abs/2310.07704) | <li> Use LLaVA pretrained <li> SFT on GRIT |
-| [Ferret2](http://arxiv.org/abs/2404.07973) | <li> image-caption alignment on 1.4M image-text pairs <li> high-resolution dense alignment with template referring & grounding <li> instruction tuning with GRIT, VQA and OCR (VQA and OCR are augmented with GLIPv2 bbox) |
-| [ChatterBox](http://arxiv.org/abs/2401.13307) | Trainable: LoRA and location decoder <li> warm up training with visual grounding only dataset. <li> instruction tuning  with CB-300K |
-| [GPT4RoI](https://arxiv.org/pdf/2307.03601) | <li> Use LLaVA pretrained <li> pretrain region feature extractor with text-region datasets (COCO, RefCOCO, RefCOCO+) <li> train connector, region feature extractor and LLM to follow instructions |
+| [Ferret](https://arxiv.org/abs/2310.07704) | <li> Use LLaVA pretrained <li> SFT on GRIT |
+| [Ferret2](https://arxiv.org/abs/2404.07973) | <li> image-caption alignment on 1.4M image-text pairs <li> high-resolution dense alignment with template referring & grounding <li> instruction tuning with GRIT, VQA and OCR (VQA and OCR are augmented with GLIPv2 bbox) |
+| [ChatterBox](https://arxiv.org/abs/2401.13307) | Trainable: LoRA and location decoder <li> warm up training with visual grounding only dataset. <li> instruction tuning  with CB-300K |
+| [GPT4RoI](https://arxiv.org/abs/2307.03601) | <li> Use LLaVA pretrained <li> pretrain region feature extractor with text-region datasets (COCO, RefCOCO, RefCOCO+) <li> train connector, region feature extractor and LLM to follow instructions |
 
 ### Evaluation Dataset
 | Dataset | Source | Data Source | Quantity | Cnstruction Method |
 |------------|--------------|--------------|--------------|--------------|
-| Ferret Bench | [Ferret](http://arxiv.org/abs/2310.07704) | COCO validation set | 120 | <li> Referring Description: models are asked to describe a referred region based on its interaction with surrounding objects. <li> Referring Reasoning: models need to reason on top of one or more referred regions correctly. <li> Grounding in Conversation: models are required to reason correctly and accurately ground/localize the objects/regions necessary for the reasoning.|
+| Ferret Bench | [Ferret](https://arxiv.org/abs/2310.07704) | COCO validation set | 120 | <li> Referring Description: models are asked to describe a referred region based on its interaction with surrounding objects. <li> Referring Reasoning: models need to reason on top of one or more referred regions correctly. <li> Grounding in Conversation: models are required to reason correctly and accurately ground/localize the objects/regions necessary for the reasoning.|
 
 
 <!-- template -->
@@ -78,7 +78,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>GPT4RoI: Instruction Tuning Large Language Model on Region-of-Interest</summary>
 
-  [Paper](https://arxiv.org/pdf/2307.03601) | [Github](https://github.com/jshilong/GPT4RoI)
+  [Paper](https://arxiv.org/abs/2307.03601) | [Github](https://github.com/jshilong/GPT4RoI)
 
    1. propose referring for mllm by replacing placeholder \<region_i\> by feature obtained by mask pooling
   
@@ -88,7 +88,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>Osprey: Pixel Understanding with Visual Instruction Tuning</summary>
 
-  [Paper](https://arxiv.org/pdf/2312.10032) | [Github](https://github.com/CircleRadon/Osprey)
+  [Paper](https://arxiv.org/abs/2312.10032) | [Github](https://github.com/CircleRadon/Osprey)
 
    1. similar to GPT4RoI, Osprey also use mask representation to refer to entities in images. 
    2. It uses mask pooling to extract semantic features from image encoder and combines with a location extractor to process the mask and output spatial token.
@@ -98,7 +98,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>LISA: Reasoning Segmentation via Large Language Model</summary>
 
-  [Paper](http://arxiv.org/abs/2308.00692) | [Github](https://github.com/dvlab-research/LISA)
+  [Paper](https://arxiv.org/abs/2308.00692) | [Github](https://github.com/dvlab-research/LISA)
 
    1. adapt LLM with mask decoder trained with segmentation datasets converted to LLM format ==> reasoning segmentation ability naturally emerges
    2. promote reason seg (complex reasoning requirement) benchmark
@@ -131,7 +131,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>Unified-IO 2: Scaling Autoregressive Multimodal Models with Vision, Language, Audio, and Action</summary>
 
-  [Paper](http://arxiv.org/abs/2312.17172) | [Github](https://github.com/allenai/unified-io-2) | [Project](https://unified-io-2.allenai.org/)
+  [Paper](https://arxiv.org/abs/2312.17172) | [Github](https://github.com/allenai/unified-io-2) | [Project](https://unified-io-2.allenai.org/)
   
    1. following Unified-IO v1, creates a unified IO for all sorts of modalities including image, masks, bboxes, audios (into discrete tokens)
       1. dense masks are all binary, unlike v1 which specifies the color in text instruction (model struggles to follow)
@@ -144,7 +144,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>PixelLM: Pixel Reasoning with Large Multimodal Model</summary>
 
-  [Paper](http://arxiv.org/abs/2312.02228) | [Github](https://github.com/MaverickRen/PixelLM) | [Project](https://pixellm.github.io/)
+  [Paper](https://arxiv.org/abs/2312.02228) | [Github](https://github.com/MaverickRen/PixelLM) | [Project](https://pixellm.github.io/)
   
    1. learnable seg tokens + light-weight decoder
    2. a bunch of tricks:
@@ -157,7 +157,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>PSALM: Pixelwise SegmentAtion with Large Multi-Modal Model</summary>
 
-  [Paper](http://arxiv.org/abs/2403.14598) | [Github](https://github.com/zamling/PSALM)
+  [Paper](https://arxiv.org/abs/2403.14598) | [Github](https://github.com/zamling/PSALM)
   
    1. new paradigm: first generate mask proposal, then genereate mask and classification (following mask2former)
    2. instruction prompt + conditional prompt + candidate masks token
@@ -172,7 +172,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>LLM-Seg: Bridging Image Segmentation and Large Language Model Reasoning</summary>
 
-  [Paper](http://arxiv.org/abs/2404.08767) | [Github](https://github.com/wangjunchi/LLMSeg)
+  [Paper](https://arxiv.org/abs/2404.08767) | [Github](https://github.com/wangjunchi/LLMSeg)
   
    1. Use SAM to generate mask candidates, then fomulate the problem as mask selection (mask classification)
    2. promote LLM-Seg40K dataset, by using LLaVA to generate caption, then GPT4 to generate question-answer pair.
@@ -183,7 +183,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>GROUNDHOG: Grounding Large Language Models to Holistic Segmentation</summary>
 
-  [Paper](http://arxiv.org/abs/2402.16846) | [Project](https://groundhog-mllm.github.io/)
+  [Paper](https://arxiv.org/abs/2402.16846) | [Project](https://groundhog-mllm.github.io/)
    
    1. disantengle grounding with referring
    2. grounding as mask selection and train a mask2former+ to generate mask candidates
@@ -196,7 +196,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>DetGPT: Detect What You Need via Reasoning</summary>
 
-  [Paper](http://arxiv.org/abs/2305.14167) | [Github](https://github.com/OptimalScale/DetGPT) | [Project](https://detgpt.github.io/)
+  [Paper](https://arxiv.org/abs/2305.14167) | [Github](https://github.com/OptimalScale/DetGPT) | [Project](https://detgpt.github.io/)
    
    1. Follow LLaVA to tune VLM and for vqa
    2. Use grouding DINO to ground response generated by VLM to detect the relevantg entities.
@@ -207,7 +207,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>Ferret: Refer and Ground Anything Anywhere at Any Granularity</summary>
 
-  [Paper](http://arxiv.org/abs/2310.07704) | [Github](https://github.com/apple/ml-ferret)
+  [Paper](https://arxiv.org/abs/2310.07704) | [Github](https://github.com/apple/ml-ferret)
    
    1. propose hybrid region representation for referring : region name + coordinates + mask pooled feature by Spatial-aware visual sampler
    2. grounding through bbox
@@ -218,7 +218,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>Ferret-v2: An Improved Baseline for Referring and Grounding with Large Language Models</summary>
 
-  [Paper](http://arxiv.org/abs/2404.07973)
+  [Paper](https://arxiv.org/abs/2404.07973)
    
    1. propose a bunch of improvements on Ferret v1
    2. including any-resolution (patches) for larger resolution
@@ -226,7 +226,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
    4. and High-resolution Dense Alignment stage between SFT and instruction turning.
   <summary>u-LLaVA: Unifying Multi-Modal Tasks via Large Language Model</summary>
 
-  [Paper](http://arxiv.org/abs/2311.05348) | [Github](https://github.com/OPPOMKLab/u-LLaVA)
+  [Paper](https://arxiv.org/abs/2311.05348) | [Github](https://github.com/OPPOMKLab/u-LLaVA)
    
    1. propose to use different decoder for grounding (SAM for segmentation, Grounding DINO for detection)
       
@@ -236,7 +236,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>GSVA: Generalized Segmentation via Multimodal Large Language Models</summary>
 
-  [Paper](http://arxiv.org/abs/2312.10103) | [Github](https://github.com/LeapLabTHU/GSVA)
+  [Paper](https://arxiv.org/abs/2312.10103) | [Github](https://github.com/LeapLabTHU/GSVA)
    
    1. propose to Generalized Referring Expression Segmentation (GRES) in grounding LLM
       1. multiple object to ground
@@ -248,7 +248,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>NExT-Chat: An LMM for Chat, Detection and Segmentation</summary>
 
-  [Paper](https://arxiv.org/pdf/2311.04498) | [Github](https://github.com/NExT-ChatV/NExT-Chat) | [Project](https://next-chatv.github.io/)
+  [Paper](https://arxiv.org/abs/2311.04498) | [Github](https://github.com/NExT-ChatV/NExT-Chat) | [Project](https://next-chatv.github.io/)
 
    1. propose box encoder-decoder for referring and grounding
    2. for grounding, use <trigger> token to indicate the presence of a grounding output and input the latent embedding to the box decoder (mask decoder e.g. SAM) for box (mask) generation 
@@ -261,7 +261,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>PerceptionGPT: Effectively Fusing Visual Perception into LLM</summary>
 
-  [Paper](https://arxiv.org/pdf/2311.06612)
+  [Paper](https://arxiv.org/abs/2311.06612)
 
    1. similar to NExT-Chat, propose box encoder-decoder to encode and decode boxes, but seems to only focus on grounding without referring
    2. One possible intriguing point: grounding output indicator \<vis\> is used to indicate the presence of grounding output (as usual) but the is replaced by the encoder's output feature in the LLM input. 
@@ -286,7 +286,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>Shikra: Unleashing Multimodal LLM's Referential Dialogue Magic</summary>
 
-  [Paper](https://arxiv.org/pdf/2306.15195) | [Github](https://github.com/shikras/shikra)
+  [Paper](https://arxiv.org/abs/2306.15195) | [Github](https://github.com/shikras/shikra)
 
    1. propose to use normalized boxes for unified grounding and referring
    2. Use texts to represent all normalized boxes (directly tokenized by text tokenizer) and input to LLM
@@ -296,7 +296,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>Groma: Localized Visual Tokenization for Grounding Multimodal Large Language Models</summary>
 
-  [Paper](http://arxiv.org/abs/2404.13013) | [Github](https://github.com/FoundationVision/Groma) | [Project](https://groma-mllm.github.io/)
+  [Paper](https://arxiv.org/abs/2404.13013) | [Github](https://github.com/FoundationVision/Groma) | [Project](https://groma-mllm.github.io/)
 
    1. Propose to ground and refer with a set of proposed regions.
    2. Change a Deformable DETR detection head into binary classifier to propose ROI and use AlignROI pooling to get the region feature
@@ -308,7 +308,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
   <summary>GroundingGPT:Language Enhanced Multi-modal Grounding Model</summary>
 
-  [Paper](http://arxiv.org/abs/2401.06071) | [Github](https://github.com/OPPOMKLab/u-LLaVA)
+  [Paper](https://arxiv.org/abs/2401.06071) | [Github](https://github.com/OPPOMKLab/u-LLaVA)
    
    1. grounding and referring of multi-modality in text
       1. bounding box by four relative coordinate values:[x1, y1, x2, y2]
