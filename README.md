@@ -47,7 +47,8 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 | GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | COYO-700M, LAION-2B | - | <li> Templates are used to convert data. <li> SAM is used to generate masks for free-form referring. <li> ChatGPT4 is used to generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. <li> Negative mining: generate negative yes/or question|
 | Shikra-RD | [Shikra](https://arxiv.org/pdf/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
 | CB-300K | [ChatterBox](http://arxiv.org/abs/2401.13307) | VG | 717,075 QA pairs | 4 subsets. <li> CB-MRG: Use ChatGPT to write dialogues with bbox <li> CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT <li> CB-REF REG task <li> CB-GND: grounding task |
-| GranD | [GLaMM](http://arxiv.org/abs/2311.03356) | SA-1B, COCO, Objects365, OpenImages, Visual Genome | 7.5M unique concepts, 810M regions | Automated annotation pipeline with SAM for segmentation masks | 
+| GranD | [GLaMM](http://arxiv.org/abs/2311.03356) | SA-1B (11M images), COCO, Objects365, OpenImages, Visual Genome | 7.5M unique concepts, 810M regions | Automated annotation pipeline with SAM for dense pixel-wise grounding. Used for pretraining. |
+| GranD-f | [GLaMM](http://arxiv.org/abs/2311.03356) | GranD (refined) | ~214K image-grounded text pairs | Refined subset of GranD for fine-tuning, with 1000 images held out for human-annotated evaluation | 
 
 
 ### Training Recipe
@@ -106,6 +107,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
    2. Introduces Grounded Conversation Generation (GCG) task combining phrase grounding, referring expression segmentation, and vision-language conversations
    3. Proposes GranD (Grounding-anything Dataset) with 7.5M unique concepts grounded in 810M regions with segmentation masks
    4. Accepts both textual and optional visual prompts (region of interest) for flexible interaction at multiple granularity levels
+   5. Architecture: Global Image Encoder for full images, Region Encoder with RoI pooling for regions, LLM generates responses with grounding set tokens, Pixel Decoder decodes segmentation masks from set tokens' latent
   
 </details>
 <details>
