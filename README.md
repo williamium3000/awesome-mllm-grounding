@@ -24,7 +24,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 ### Grounding
 | Format | Desc | Paper | 
 |------------|-------|--------|
-| Decoder on latent| leverage a decoder to ground | [PerceptionGPT](https://arxiv.org/pdf/2311.06612), [NExT-Chat](https://arxiv.org/pdf/2311.04498), [PSALM](http://arxiv.org/abs/2403.14598), [PixelLM](http://arxiv.org/abs/2312.02228), [u-LLaVA](http://arxiv.org/abs/2311.05348), [GSVA](http://arxiv.org/abs/2312.10103), [ChatterBox](http://arxiv.org/abs/2401.13307)|
+| Decoder on latent| leverage a decoder to ground | [PerceptionGPT](https://arxiv.org/pdf/2311.06612), [NExT-Chat](https://arxiv.org/pdf/2311.04498), [PSALM](http://arxiv.org/abs/2403.14598), [PixelLM](http://arxiv.org/abs/2312.02228), [u-LLaVA](http://arxiv.org/abs/2311.05348), [GSVA](http://arxiv.org/abs/2312.10103), [ChatterBox](http://arxiv.org/abs/2401.13307), [GLaMM](http://arxiv.org/abs/2311.03356)|
 | Output numerical coordinates | direct output numerical tokens | [Shikra](https://arxiv.org/pdf/2306.15195), [VisionLLM](https://proceedings.neurips.cc/paper_files/paper/2023/file/c1f7b1ed763e9c75e4db74b49b76db5f-Paper-Conference.pdf), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [CogVLM](http://arxiv.org/abs/2311.03079)|
 | Output token coordinates | output new tokens added to refer positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) |
 | Pixel space | output in discrete pixel space encoded by VQGAN | [Unified-IO](https://arxiv.org/abs/2206.08916), [Unified-IO 2](http://arxiv.org/abs/2312.17172) | 
@@ -34,7 +34,7 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
 | Format | Desc | Paper | 
 |------------|-------|--------|
-| Pooling | Leverage Mask Pooling / RoI Pooling / RoI Align to obtain features from the im encoder output | [Groma](http://arxiv.org/abs/2404.13013), [GPT4RoI](https://arxiv.org/pdf/2307.03601), [Osprey](https://arxiv.org/pdf/2312.10032), [PSALM](http://arxiv.org/abs/2403.14598), [GROUNDHOG](http://arxiv.org/abs/2305.14167), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [PVIT](https://arxiv.org/pdf/2308.13437), [ChatterBox](http://arxiv.org/abs/2401.13307) |
+| Pooling | Leverage Mask Pooling / RoI Pooling / RoI Align to obtain features from the im encoder output | [Groma](http://arxiv.org/abs/2404.13013), [GPT4RoI](https://arxiv.org/pdf/2307.03601), [Osprey](https://arxiv.org/pdf/2312.10032), [PSALM](http://arxiv.org/abs/2403.14598), [GROUNDHOG](http://arxiv.org/abs/2305.14167), [Ferret](http://arxiv.org/abs/2310.07704), [Ferret2](http://arxiv.org/abs/2404.07973), [PVIT](https://arxiv.org/pdf/2308.13437), [ChatterBox](http://arxiv.org/abs/2401.13307), [GLaMM](http://arxiv.org/abs/2311.03356) |
 | Numerical coordinates | Leverage numerical coordinates for referring (bbox / sampled points in mask) | [Shikra](https://arxiv.org/pdf/2306.15195), [PerceptionGPT](https://arxiv.org/pdf/2311.06612) (w/ encoder), [NExT-Chat](https://arxiv.org/pdf/2311.04498) (w/ encoder), [CogVLM](http://arxiv.org/abs/2311.03079)|
 | Token coordinates | Add new tokens to vocab to present spatial positions | [Kosmos-2](https://arxiv.org/pdf/2306.14824) | 
 
@@ -46,7 +46,8 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 |------------|--------------|--------------|--------------|--------------|
 | GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | COYO-700M, LAION-2B | - | <li> Templates are used to convert data. <li> SAM is used to generate masks for free-form referring. <li> ChatGPT4 is used to generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. <li> Negative mining: generate negative yes/or question|
 | Shikra-RD | [Shikra](https://arxiv.org/pdf/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
-| CB-300K | [ChatterBox](http://arxiv.org/abs/2401.13307) | VG | 717,075 QA pairs | 4 subsets. <li> CB-MRG: Use ChatGPT to write dialogues with bbox <li> CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT <li> CB-REF REG task <li> CB-GND: grounding task | 
+| CB-300K | [ChatterBox](http://arxiv.org/abs/2401.13307) | VG | 717,075 QA pairs | 4 subsets. <li> CB-MRG: Use ChatGPT to write dialogues with bbox <li> CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT <li> CB-REF REG task <li> CB-GND: grounding task |
+| GranD | [GLaMM](http://arxiv.org/abs/2311.03356) | SA-1B, COCO, Objects365, OpenImages, Visual Genome | 7.5M unique concepts, 810M regions | Automated annotation pipeline with SAM for segmentation masks | 
 
 
 ### Training Recipe
@@ -92,6 +93,19 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
    1. similar to GPT4RoI, Osprey also use mask representation to refer to entities in images. 
    2. It uses mask pooling to extract semantic features from image encoder and combines with a location extractor to process the mask and output spatial token.
+  
+</details>
+
+<details>
+
+  <summary>GLaMM: Pixel Grounding Large Multimodal Model</summary>
+
+  [Paper](http://arxiv.org/abs/2311.03356) | [Github](https://github.com/mbzuai-oryx/groundingLMM) | [Project](https://mbzuai-oryx.github.io/groundingLMM)
+  
+   1. First model capable of generating natural language responses seamlessly integrated with object segmentation masks
+   2. Introduces Grounded Conversation Generation (GCG) task combining phrase grounding, referring expression segmentation, and vision-language conversations
+   3. Proposes GranD (Grounding-anything Dataset) with 7.5M unique concepts grounded in 810M regions with segmentation masks
+   4. Accepts both textual and optional visual prompts (region of interest) for flexible interaction at multiple granularity levels
   
 </details>
 <details>
