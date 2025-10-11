@@ -47,8 +47,8 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 | GRIT | [Ferret](http://arxiv.org/abs/2310.07704) | COYO-700M, LAION-2B | - | <li> Templates are used to convert data. <li> SAM is used to generate masks for free-form referring. <li> ChatGPT4 is used to generate dialogues with bbox. <li> Use GLIPv2 to ground groundable nouns in LLaVA-158k. <li> Negative mining: generate negative yes/or question|
 | Shikra-RD | [Shikra](https://arxiv.org/pdf/2306.15195) | Flickr30K Entities | 5,922 QA pairs | ChatGPT4 ==> Referential Dialogue (CoT dialogues with grounding & referring) |
 | CB-300K | [ChatterBox](http://arxiv.org/abs/2401.13307) | VG | 717,075 QA pairs | 4 subsets. <li> CB-MRG: Use ChatGPT to write dialogues with bbox <li> CB-LC, extend strict relation (from scene graph) to multi-turn QA with ChatGPT <li> CB-REF REG task <li> CB-GND: grounding task |
-| GranD | [GLaMM](http://arxiv.org/abs/2311.03356) | SA-1B (11M images), COCO, Objects365, OpenImages, Visual Genome | 7.5M unique concepts, 810M regions | Automated annotation pipeline with SAM for dense pixel-wise grounding. Used for pretraining. |
-| GranD-f | [GLaMM](http://arxiv.org/abs/2311.03356) | GranD (refined) | ~214K image-grounded text pairs | Refined subset of GranD for fine-tuning, with 1000 images held out for human-annotated evaluation | 
+| GranD | [GLaMM](http://arxiv.org/abs/2311.03356) | SA-1B | 11M images with 7.5M unique concepts and 810M regions. | Automated annotation pipeline with SAM for dense pixel-wise grounding. Used for pretraining. |
+| GranD-f | [GLaMM](http://arxiv.org/abs/2311.03356) | GranD (refined), Flickr30K, RefCOCOg, and PSG | ~214K image-grounded text pairs | Refined subset of GranD for fine-tuning, with 1000 images held out for human-annotated evaluation | 
 
 
 ### Training Recipe
@@ -58,6 +58,8 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 | [Ferret2](http://arxiv.org/abs/2404.07973) | <li> image-caption alignment on 1.4M image-text pairs <li> high-resolution dense alignment with template referring & grounding <li> instruction tuning with GRIT, VQA and OCR (VQA and OCR are augmented with GLIPv2 bbox) |
 | [ChatterBox](http://arxiv.org/abs/2401.13307) | Trainable: LoRA and location decoder <li> warm up training with visual grounding only dataset. <li> instruction tuning  with CB-300K |
 | [GPT4RoI](https://arxiv.org/pdf/2307.03601) | <li> Use LLaVA pretrained <li> pretrain region feature extractor with text-region datasets (COCO, RefCOCO, RefCOCO+) <li> train connector, region feature extractor and LLM to follow instructions |
+| [GLaMM](http://arxiv.org/abs/2311.03356) | <li> Use [GPT4RoI](https://arxiv.org/pdf/2307.03601) pretrained <li> pretrain on 11M GranD with LoRA <li> finetune on GranD-f, LLaVA-Instruct150K and LLaVA-Instruct-80K|
+
 
 ### Evaluation Dataset
 | Dataset | Source | Data Source | Quantity | Cnstruction Method |
@@ -94,30 +96,6 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
    1. similar to GPT4RoI, Osprey also use mask representation to refer to entities in images. 
    2. It uses mask pooling to extract semantic features from image encoder and combines with a location extractor to process the mask and output spatial token.
-  
-</details>
-
-<details>
-
-  <summary>GLaMM: Pixel Grounding Large Multimodal Model</summary>
-
-  [Paper](http://arxiv.org/abs/2311.03356) | [Github](https://github.com/mbzuai-oryx/groundingLMM) | [Project](https://mbzuai-oryx.github.io/groundingLMM)
-  
-   1. First model capable of generating natural language responses seamlessly integrated with object segmentation masks
-   2. Introduces Grounded Conversation Generation (GCG) task combining phrase grounding, referring expression segmentation, and vision-language conversations
-   3. Proposes GranD (Grounding-anything Dataset) with 7.5M unique concepts grounded in 810M regions with segmentation masks
-   4. Accepts both textual and optional visual prompts (region of interest) for flexible interaction at multiple granularity levels
-   5. Architecture: Global Image Encoder for full images, Region Encoder with RoI pooling for regions, LLM generates responses with grounding set tokens, Pixel Decoder decodes segmentation masks from set tokens' latent
-  
-</details>
-<details>
-
-  <summary>LISA: Reasoning Segmentation via Large Language Model</summary>
-
-  [Paper](http://arxiv.org/abs/2308.00692) | [Github](https://github.com/dvlab-research/LISA)
-
-   1. adapt LLM with mask decoder trained with segmentation datasets converted to LLM format ==> reasoning segmentation ability naturally emerges
-   2. promote reason seg (complex reasoning requirement) benchmark
   
 </details>
 
@@ -326,6 +304,18 @@ Feel free to visit my [homepage](https://williamium3000.github.io/) and contact 
 
    1. Introduce the reasoning segmentation task and establish a reasoning segmentation benchmark.
    2. Propose LISA model, which represents the segmentation mask as an embedding and incorporates new segmentation capabilities.
+</details>
+
+<details>
+
+  <summary>GLaMM: Pixel Grounding Large Multimodal Model</summary>
+
+  [Paper](http://arxiv.org/abs/2311.03356) | [Github](https://github.com/mbzuai-oryx/groundingLMM) | [Project](https://mbzuai-oryx.github.io/groundingLMM)
+  
+   1. Introduces Grounded Conversation Generation (GCG) task combining phrase grounding, referring expression segmentation, and vision-language conversations.
+   3. Proposes a scalable pipeline to curate GranD (Grounding-anything Dataset) with 7.5M unique concepts grounded in 810M regions with segmentation masks, 214k GranDf and a ～1000 evaluation set.
+   5. Architecture: Global Image Encoder for holistic understanding, Region Encoder with RoI pooling for regions referring, LLM generates responses with grounding tokens <seg>, and use Pixel Decoder (SAM) to decode segmentation masks from <seg> tokens' latent
+  
 </details>
 
 ## 🔥 Multi-modality
